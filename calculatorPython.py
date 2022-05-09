@@ -1,21 +1,24 @@
-#Reference: https://youtu.be/9WPmxH4RRZ0 by DJ Oamen
+# Reference: https://youtu.be/9WPmxH4RRZ0 by DJ Oamen
 
-#Title: calculatorPython
-#Author: Omar El-Shaarawi
-#Date: 28/12/2020
-#Describtion: Simple interactable calculator to learn Python.
+# Title: calculatorPython
+# Author: Omar El-Shaarawi
+# Date: 28/12/2020
+# Describtion: Simple interactable calculator to learn Python.
 
-from tkinter import*
+from tkinter import *
 
-def btnClick (num):
+
+def btnClick(num):
     global operator
     operator = operator + str(num)
     text_Input.set(operator)
+
 
 def btnClearDisplay():
     global operator
     operator = ""
     text_Input.set("")
+
 
 def btnEqualInput():
     global operator
@@ -23,70 +26,75 @@ def btnEqualInput():
     text_Input.set(sumup)
     operator = ""
 
+
+def btnValue(value, row, column, pad, color):
+    Button(calc, padx=pad, bd=8, fg=color, font=('arial', 20, 'bold'),
+           text=value, bg="black", command=lambda: btnClick(value)).grid(row=row, column=column)
+
+
 calc = Tk()
 calc.title("Calculator")
 operator = ""
 text_Input = StringVar()
 
-txtDisplay = Entry(calc, font = ('arial', 20, 'bold'), fg = "white", textvariable = text_Input, bd = 30, insertwidth = 4,
-                     bg = "black", justify = 'right').grid(columnspan = 4)
+# txtDisplay
+Entry(calc, font=('arial', 20, 'bold'), fg="white", textvariable=text_Input, bd=30, insertwidth=4,
+      bg="black", justify='right').grid(columnspan=4)
 
-#===================================================================================
+# ===================================================================================
+#btn7
+btnValue(7, 1, 0, 19, "white")
 
-btn7 = Button(calc, padx = 19, bd = 8, fg = "white", font = ('arial', 20, 'bold'),
-                text = "7", bg = "black", command = lambda:btnClick(7)).grid(row = 1, column = 0)
-                
-btn8 = Button(calc, padx = 19, bd = 8, fg = "white", font = ('arial', 20, 'bold'),
-                text = "8", bg = "black", command = lambda:btnClick(8)).grid(row = 1, column = 1)
+#btn8
+btnValue(8, 1, 1, 19, "white")
 
-btn9 = Button(calc, padx = 19, bd = 8, fg = "white", font = ('arial', 20, 'bold'),
-                text = "9", bg = "black", command = lambda:btnClick(9)).grid(row = 1, column = 2)
+#btn9
+btnValue(9, 1, 2, 19, "white")
 
-btnPlus = Button(calc, padx = 22, bd = 8, fg = "red", font = ('arial', 20, 'bold'),
-                text = "+", bg = "black", command = lambda:btnClick("+")).grid(row = 1, column = 3)
+#btnPlus
+btnValue("+", 1, 3, 22, "red")
 
-#===================================================================================
+# ===================================================================================
 
-btn4 = Button(calc, padx = 19, bd = 8, fg = "white", font = ('arial', 20, 'bold'),
-                text = "4", bg = "black", command = lambda:btnClick(4)).grid(row = 2, column = 0)
+# btn4
+btnValue(4, 2, 0, 19, "white")
 
-btn5 = Button(calc, padx = 19, bd = 8, fg = "white", font = ('arial', 20, 'bold'),
-                text = "5", bg = "black", command = lambda:btnClick(5)).grid(row = 2, column = 1)
-                
-btn6 = Button(calc, padx = 19, bd = 8, fg = "white", font = ('arial', 20, 'bold'),
-                text = "6", bg = "black", command = lambda:btnClick(6)).grid(row = 2, column = 2)
+# btn5
+btnValue(5, 2, 1, 19, "white")
 
-btnMinus = Button(calc, padx = 22, bd = 8, fg = "red", font = ('arial', 20, 'bold'),
-                text = "-", bg = "black", command = lambda:btnClick("-")).grid(row = 2, column = 3)
+# btn6
+btnValue(6, 2, 2, 19, "white")
 
-#===================================================================================
+# btnMinus
+btnValue("-", 2, 3, 22, "red")
 
-btn1 = Button(calc, padx = 19, bd = 8, fg = "white", font = ('arial', 20, 'bold'),
-                text = "1", bg = "black", command = lambda:btnClick(1)).grid(row = 3, column = 0)
+# ===================================================================================
 
-btn2 = Button(calc, padx = 19, bd = 8, fg = "white", font = ('arial', 20, 'bold'),
-                text = "2", bg = "black", command = lambda:btnClick(2)).grid(row = 3, column = 1)
+# btn1
+btnValue(1, 3, 0, 19, "white")
 
-btn3 = Button(calc, padx = 19, bd = 8, fg = "white", font = ('arial', 20, 'bold'),
-                text = "3", bg = "black", command = lambda:btnClick(3)).grid(row = 3, column = 2)
+# btn2
+btnValue(2, 3, 1, 19, "white")
 
-btnMultiply = Button(calc, padx = 22, bd = 8, fg = "red", font = ('arial', 20, 'bold'),
-                text = "*", bg = "black", command = lambda:btnClick("*")).grid(row = 3, column = 3)
+# btn3
+btnValue(3, 3, 2, 19, "white")
 
-#===================================================================================
+# btnMultiply
+btnValue("*", 3, 3, 22, "red")
 
-btnClear = Button(calc, padx = 19, bd = 8, fg = "red", font = ('arial', 20, 'bold'),
-                text = "C", bg = "black", command = btnClearDisplay).grid(row = 4, column = 0)
+# ===================================================================================
 
-btn0 = Button(calc, padx = 19, bd = 8, fg = "white", font = ('arial', 20, 'bold'),
-                text = "0", bg = "black", command = lambda:btnClick(0)).grid(row = 4, column = 1)
+# btnClear
+Button(calc, padx=19, bd=8, fg="red", font=('arial', 20, 'bold'),
+       text="C", bg="black", command=btnClearDisplay).grid(row=4, column=0)
 
-btnEqual = Button(calc, padx = 19, bd = 8, fg = "red", font = ('arial', 20, 'bold'),
-                text = "=", bg = "black", command = btnEqualInput).grid(row = 4, column = 2)
+btnValue(0, 4, 1, 19, "white")
 
-btnDivided = Button(calc, padx = 22, bd = 8, fg = "red", font = ('arial', 20, 'bold'),
-                text = "/", bg = "black", command = lambda:btnClick("/")).grid(row = 4, column = 3)
+Button(calc, padx=19, bd=8, fg="red", font=('arial', 20, 'bold'),
+       text="=", bg="black", command=btnEqualInput).grid(row=4, column=2)
 
-#===================================================================================
+btnValue("/", 4, 3, 22, "red")
+
+# ===================================================================================
 
 calc.mainloop()
